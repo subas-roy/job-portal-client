@@ -6,5 +6,7 @@
  * npx tailwindcss init -p
  * clear app.css
  * add @tailwind base; @tailwind components; @tailwind utilities; to index.css
- * npm i -D daisyui@latest
+ * npm install -D daisyui@latest
+ * npm install lottie-react
+ * npm install firebase
  */
