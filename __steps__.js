@@ -10,4 +10,10 @@
  * npm install lottie-react
  * npm install firebase
  * npm install motion
+ * Recourse:
+ *     Signin & signout animation: https://lottiefiles.com/
+ *     Logo & favicon: https://icons8.com/
+ *     Banner image: https://daisyui.com/components/hero/
+ *     Text animation: https://www.motion.dev/react/
+ *     free images: https://freepik.com/
  */
