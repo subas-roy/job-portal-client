@@ -9,4 +9,5 @@
  * npm install -D daisyui@latest
  * npm install lottie-react
  * npm install firebase
+ * npm install motion
  */
