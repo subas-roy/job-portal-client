@@ -16,4 +16,7 @@
  *     Banner image: https://daisyui.com/components/hero/
  *     Text animation: https://www.motion.dev/react/
  *     free images: https://freepik.com/
+ *     free icons: https://react-icons.com/
+ *         npm install react-icons --save
+ *      
  */
