@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const JobApply = () => {
     const { id } = useParams();
@@ -26,11 +27,17 @@ const JobApply = () => {
             },
             body: JSON.stringify(applicationData),
         })
-        .then(res => res.json())
-        .then(data => {
-            alert('Application submitted successfully!');
-            console.log(data);
-        })
+            .then(res => res.json())
+            .then(data => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Application submitted successfully!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                console.log(data);
+            })
     }
 
     return (

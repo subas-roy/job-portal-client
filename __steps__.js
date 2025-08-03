@@ -18,5 +18,6 @@
  *     free images: https://freepik.com/
  *     free icons: https://react-icons.com/
  *         npm install react-icons --save
- *      
+ *     alert: https://sweetalert2.github.io/
+ * 
  */
