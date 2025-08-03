@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const JobApply = () => {
     const { id } = useParams();
-    console.log(id);
+    const { user } = useAuth();
+    console.log(id, user);
     const handleApplication = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -10,12 +12,25 @@ const JobApply = () => {
         const github = form.github.value;
         const resume = form.resume.value;
         const applicationData = {
+            jobId: id,
+            applicant_email: user?.email,
             linkedIn,
             github,
             resume,
-            jobId: id,
         };
-        console.log(applicationData);
+        // console.log(applicationData);
+        fetch('http://localhost:3000/job-applications', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(applicationData),
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert('Application submitted successfully!');
+            console.log(data);
+        })
     }
 
     return (
