@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const JobApply = () => {
     const { id } = useParams();
     const { user } = useAuth();
+    const navigate = useNavigate();
     console.log(id, user);
     const handleApplication = (event) => {
         event.preventDefault();
@@ -32,11 +33,11 @@ const JobApply = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Application submitted successfully!",
+                    title: "Submitted successfully!",
                     showConfirmButton: false,
                     timer: 1500
                 });
-                console.log(data);
+                navigate('/myApplications');
             })
     }
 
