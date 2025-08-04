@@ -11,6 +11,16 @@ const MyApplications = () => {
             .then(data => setApplications(data));
     }, [user.email]);
 
+    const handleDeleteApplication = (id) => {
+        fetch(`http://localhost:3000/job-applications/${id}`, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(() => {
+                setApplications(applications.filter(application => application._id !== id));
+            });
+    }
+
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -23,8 +33,8 @@ const MyApplications = () => {
                             </label>
                         </th>
                         <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
+                        <th>Requirements</th>
+                        <th>Job Type</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -47,19 +57,23 @@ const MyApplications = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="font-bold">{application.title}</div>
+                                        <div className="font-bold">{application.company}</div>
                                         <div className="text-sm opacity-50">{application.location}</div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                Zemlak, Daniel and Leannon
+                                {
+                                    application.requirements.map((skill, index) => (
+                                        <span key={index} className="badge">{skill}</span>
+                                    ))
+                                }
                                 <br />
-                                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                <span className="badge badge-ghost badge-sm">{application.title}</span>
                             </td>
-                            <td>Purple</td>
+                            <td>{application.jobType}</td>
                             <th>
-                                <button className="btn btn-ghost btn-xs">X</button>
+                                <button onClick={() => handleDeleteApplication(application._id)} className="btn btn-ghost btn-xs">X</button>
                             </th>
                         </tr>)
                     }
