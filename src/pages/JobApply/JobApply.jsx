@@ -30,13 +30,15 @@ const JobApply = () => {
         })
             .then(res => res.json())
             .then(data => {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Submitted successfully!",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Submitted successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
                 navigate('/myApplications');
             })
     }
