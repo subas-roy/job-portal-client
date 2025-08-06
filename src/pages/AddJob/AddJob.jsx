@@ -1,5 +1,20 @@
 
 const AddJob = () => {
+
+    const handleAddJob = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        console.log(formData.entries());
+        const initialData = Object.fromEntries(formData)
+        console.log(initialData);
+        const { min, max, currency, ...newJob } = initialData;
+        console.log(newJob);
+        newJob.salaryRange = { min, max, currency }
+        newJob.requirements = newJob.requirements.split('\n')
+        newJob.responsibilities = newJob.responsibilities.split('\n')
+        console.log(newJob);
+    }
+
     return (
         <div className="card bg-base-100 w-full shadow-2xl">
             <div className="card-body">
@@ -43,9 +58,9 @@ const AddJob = () => {
                         <label className="label">Company name</label>
                         <input type="text" name="company_name" className="input w-full" placeholder="company name" />
                         <label className="label">Requirements</label>
-                        <input type="text" name="Requirements" className="input w-full" placeholder="requirements" />
+                        <textarea className="textarea textarea-ghost w-full" name="requirements" placeholder="requirements"></textarea>
                         <label className="label">Responsibilities</label>
-                        <input type="text" className="input w-full" placeholder="responsibilities" />
+                        <textarea className="textarea textarea-ghost w-full" name="responsibilities" placeholder="responsibilities"></textarea>
                         <label className="label">HR Name</label>
                         <input type="text" name="hr_name" className="input w-full" placeholder="hr name" />
                         <label className="label">HR Email</label>
